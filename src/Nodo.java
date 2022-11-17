@@ -1,4 +1,5 @@
-public class Nodo <T> {
+
+public class Nodo <T>{
 
     T valor;
     Nodo<T> siguiente;
@@ -12,5 +13,16 @@ public class Nodo <T> {
     public String toString() {
         return this.valor.toString();
     }
+    public Nodo<T> getSiguiente(){
+        return this.siguiente;
+    }
+    public void setSiguiente(Nodo<T> sig){
+        this.siguiente = sig;
+    }
+    public T getValor(){
+        return this.valor;
+    }
+
+    
 }
 

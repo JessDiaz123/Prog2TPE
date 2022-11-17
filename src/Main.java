@@ -1,10 +1,19 @@
+import java.util.Comparator;
+
+import Comparadores.ComparadorInt;
+
 public class Main {
     public static void main(String[] args) {
         
-        Nodo <Integer> n1 = new Nodo<>(1);
-        ListaEnlazada<Integer> l1 = new ListaEnlazada<>();
+        ComparadorInt c1 = new ComparadorInt();
+        
+        ListaEnlazada<Integer> l1 = new ListaEnlazada<>(c1);
 
-        l1.agregarOrdenado(n1);
+        l1.agregarOrdenado(2);
+        l1.agregarOrdenado(16);
+        // l1.agregarOrdenado(15);
+        // l1.agregarOrdenado(7);
+        // l1.agregarOrdenado(4);
 
         System.out.println(l1);
 
