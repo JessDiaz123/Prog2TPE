@@ -9,11 +9,11 @@ public class Main {
         
         ListaEnlazada<Integer> l1 = new ListaEnlazada<>(c1);
 
-        l1.agregarOrdenado(2);
         l1.agregarOrdenado(16);
-        // l1.agregarOrdenado(15);
-        // l1.agregarOrdenado(7);
-        // l1.agregarOrdenado(4);
+        l1.agregarOrdenado(2);
+        l1.agregarOrdenado(17);
+        l1.agregarOrdenado(7);
+        l1.agregarOrdenado(4);
 
         System.out.println(l1);
 
