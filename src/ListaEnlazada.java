@@ -13,11 +13,16 @@ public class ListaEnlazada<T> {
   public void removeAll(T elementoAEliminar) {
     Nodo<T> puntero = primerNodo;
     int pos = 0;
+
     while (puntero != null) {
+      // System.out.println(pos);
+      // System.out.println(puntero);
       if (puntero.getValor().equals(elementoAEliminar)) {
+        System.out.println("entro aca");
         this.remove(pos);
+        puntero = puntero.getSiguiente();
       } else {
-        puntero.getSiguiente();
+        puntero = puntero.getSiguiente();
         pos++;
       }
     }
@@ -36,7 +41,14 @@ public class ListaEnlazada<T> {
         puntero = puntero.getSiguiente();
         posicion++;
       }
-      punteroAnterior.setSiguiente(puntero.getSiguiente());
+      //esto si estoy no estoy en el primerNodo
+      if(punteroAnterior!=null){
+        punteroAnterior.setSiguiente(puntero.getSiguiente());
+      }
+      //estp si estoy en el primer nodo
+      else{
+        this.primerNodo=primerNodo.getSiguiente();
+      }
       this.size--;
     }
   }

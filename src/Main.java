@@ -32,14 +32,25 @@ public class Main {
     l1.add(7);
     l1.add(4);
 
+
+
+
+
+
+
+
     //eliminar todas las ocurrencias
-    System.out.println(l1);
+    // System.out.println(l1);
     // l1.removeAll(2);
+    // l1.removeAll(16);
+    // l1.removeAll(1);
+    // l1.removeAll(4);
+    // l1.removeAll(7);
     // System.out.println(l1);
 
     //eliminar 
     // System.out.println(l1);
-    // l1.remove(3);
+    // l1.remove(0);
     // System.out.println(l1);
   }
 }
