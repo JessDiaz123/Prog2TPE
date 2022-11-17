@@ -4,21 +4,57 @@ public class ListaEnlazada<T> {
 
   private Nodo<T> primerNodo;
   private Comparator<T> orden;
-  private int size = -1;
+  private int size = 0;
 
   public ListaEnlazada(Comparator<T> comp) {
     this.orden = comp;
   }
+  
 
-  public void removeAll(T elementoAEliminar) {
+  // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista
+
+  // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente
+  // reordenamiento de los elementos ya almacenados.
+  public void setOrden(Comparator<T> compNuevo) {
+    this.orden = compNuevo;
+    this.toOrder();
+  }
+  private void toOrder(){
+    Nodo<T> aux= primerNodo;
+    this.primerNodo=null;
+    while(aux!=null){
+      this.add(aux.getValor());
+      aux= aux.getSiguiente();
+    }
+
+  }
+  //d) Obtener la posición de la primera ocurrencia de un elemento dado.
+  public int find(int elementoAEncontrar) {
     Nodo<T> puntero = primerNodo;
     int pos = 0;
 
     while (puntero != null) {
       // System.out.println(pos);
       // System.out.println(puntero);
+      if (puntero.getValor().equals(elementoAEncontrar)) {
+        return pos;
+      } else {
+        puntero = puntero.getSiguiente();
+        pos++;
+      }
+    }
+
+    return -1;
+  }
+
+  //c) Eliminar todas las ocurrencias de un elemento de la estructura
+  //dado el elemento.
+  public void removeAll(T elementoAEliminar) {
+    Nodo<T> puntero = primerNodo;
+    int pos = 0;
+
+    while (puntero != null) {
       if (puntero.getValor().equals(elementoAEliminar)) {
-        System.out.println("entro aca");
         this.remove(pos);
         puntero = puntero.getSiguiente();
       } else {
@@ -28,6 +64,7 @@ public class ListaEnlazada<T> {
     }
   }
 
+  //b) Eliminar un elemento de la estructura dado una posición.
   public void remove(int posicionAEliminar) {
     int posicion = 0;
     Nodo<T> puntero = primerNodo;
@@ -42,12 +79,12 @@ public class ListaEnlazada<T> {
         posicion++;
       }
       //esto si estoy no estoy en el primerNodo
-      if(punteroAnterior!=null){
+      if (punteroAnterior != null) {
         punteroAnterior.setSiguiente(puntero.getSiguiente());
       }
       //estp si estoy en el primer nodo
-      else{
-        this.primerNodo=primerNodo.getSiguiente();
+      else {
+        this.primerNodo = primerNodo.getSiguiente();
       }
       this.size--;
     }
@@ -57,6 +94,7 @@ public class ListaEnlazada<T> {
     return this.size;
   }
 
+  //a) Insertar un nuevo elemento en la estructura.
   public void add(T datoNuevo) {
     Nodo<T> nuevo = new Nodo<T>(datoNuevo);
     Nodo<T> puntero1;
@@ -65,8 +103,7 @@ public class ListaEnlazada<T> {
     if (primerNodo == null) {
       primerNodo = nuevo;
       primerNodo.setSiguiente(null);
-    } 
-    else {
+    } else {
       puntero1 = primerNodo;
       while (puntero1 != null) {
         puntero2 = puntero1.getSiguiente();

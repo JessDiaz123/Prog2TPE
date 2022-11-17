@@ -9,6 +9,7 @@ public class Nodo <T>{
         this.siguiente = null;
     }
 
+
     @Override
     public String toString() {
         return this.valor.toString();
