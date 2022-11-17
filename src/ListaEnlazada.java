@@ -2,14 +2,42 @@ import java.util.Comparator;
 
 public class ListaEnlazada<T> {
 
-  Nodo<T> primerNodo;
-  Comparator<T> orden;
+  private Nodo<T> primerNodo;
+  private Comparator<T> orden;
+  private int size = -1;
 
   public ListaEnlazada(Comparator<T> comp) {
     this.orden = comp;
   }
 
-  public void agregarOrdenado(T datoNuevo) {
+
+  public void remove(int posicionAEliminar){
+    int posicion=0;
+    Nodo<T> puntero = primerNodo;
+    Nodo<T> punteroAnterior = null;
+    if(posicionAEliminar<0||posicionAEliminar>this.getSize()){
+      System.out.println("no existe esa posicion en el arreglo");
+      return;
+    }
+    else{
+      System.out.println("entro aca no se porque");
+      while(posicion<posicionAEliminar){
+        punteroAnterior = puntero;
+        puntero=puntero.getSiguiente();
+        posicion++;
+      }
+      punteroAnterior.setSiguiente(puntero.getSiguiente());
+      this.size--;
+    }
+
+  }
+
+  public int getSize(){
+    return this.size;
+  }
+
+
+  public void add(T datoNuevo) {
     Nodo<T> nuevo = new Nodo<T>(datoNuevo);
     Nodo<T> puntero1;
     Nodo<T> puntero2;
@@ -53,14 +81,16 @@ public class ListaEnlazada<T> {
           break;
         } 
 
-        
+
         // si no, sigo recorriendo la lista hasta que puntero1 sea null
         else {
           puntero1 = puntero1.getSiguiente();
         }
       }
     }
+    size++;
   }
+
 
   public String toString() {
     Nodo<T> puntero = primerNodo;
