@@ -10,32 +10,40 @@ public class ListaEnlazada<T> {
     this.orden = comp;
   }
 
+  public void removeAll(T elementoAEliminar) {
+    Nodo<T> puntero = primerNodo;
+    int pos = 0;
+    while (puntero != null) {
+      if (puntero.getValor().equals(elementoAEliminar)) {
+        this.remove(pos);
+      } else {
+        puntero.getSiguiente();
+        pos++;
+      }
+    }
+  }
 
-  public void remove(int posicionAEliminar){
-    int posicion=0;
+  public void remove(int posicionAEliminar) {
+    int posicion = 0;
     Nodo<T> puntero = primerNodo;
     Nodo<T> punteroAnterior = null;
-    if(posicionAEliminar<0||posicionAEliminar>this.getSize()){
+    if (posicionAEliminar < 0 || posicionAEliminar > this.getSize()) {
       System.out.println("no existe esa posicion en el arreglo");
       return;
-    }
-    else{
-      System.out.println("entro aca no se porque");
-      while(posicion<posicionAEliminar){
+    } else {
+      while (posicion < posicionAEliminar) {
         punteroAnterior = puntero;
-        puntero=puntero.getSiguiente();
+        puntero = puntero.getSiguiente();
         posicion++;
       }
       punteroAnterior.setSiguiente(puntero.getSiguiente());
       this.size--;
     }
-
   }
 
-  public int getSize(){
+  public int getSize() {
     return this.size;
   }
-
 
   public void add(T datoNuevo) {
     Nodo<T> nuevo = new Nodo<T>(datoNuevo);
@@ -45,11 +53,11 @@ public class ListaEnlazada<T> {
     if (primerNodo == null) {
       primerNodo = nuevo;
       primerNodo.setSiguiente(null);
-    } else {
+    } 
+    else {
       puntero1 = primerNodo;
       while (puntero1 != null) {
         puntero2 = puntero1.getSiguiente();
-
 
         // el numero nuevo debe ir al inicio de la lista?
         // si el numero ingresado es mas grande que la raiz, pasa a ser la raiz
@@ -58,8 +66,6 @@ public class ListaEnlazada<T> {
           primerNodo = nuevo;
           break;
         }
-
-
         // el numero nuevo va al final de la lista?
         //por medio del while va a ir crecio este puntero1, hasta llegar al final
         else if (
@@ -68,20 +74,16 @@ public class ListaEnlazada<T> {
         ) {
           puntero1.setSiguiente(nuevo);
           break;
-        } 
-
-
+        }
         // el nuevo tiene que ir entre 2 nodos?
         else if (
           (orden.compare(nuevo.getValor(), puntero1.getValor()) > 0) &&
-          orden.compare(puntero2.getValor(), nuevo.getValor()) > 0
+          orden.compare(puntero2.getValor(), nuevo.getValor()) >= 0
         ) {
           puntero1.setSiguiente(nuevo);
           nuevo.setSiguiente(puntero2);
           break;
-        } 
-
-
+        }
         // si no, sigo recorriendo la lista hasta que puntero1 sea null
         else {
           puntero1 = puntero1.getSiguiente();
@@ -90,7 +92,6 @@ public class ListaEnlazada<T> {
     }
     size++;
   }
-
 
   public String toString() {
     Nodo<T> puntero = primerNodo;
@@ -127,7 +128,7 @@ public class ListaEnlazada<T> {
             break;
           }
           else if ((orden.compare( nuevo.getValor(), puntero1.getValor())>0)&&
-          orden.compare( puntero2.getValor(),nuevo.getValor())>0){
+          orden.compare( puntero2.getValor(),nuevo.getValor())>=0){
             // el nuevo tiene que ir entre 2 nodos?
               puntero1.setSiguiente(nuevo);
               nuevo.setSiguiente(puntero2);

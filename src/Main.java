@@ -7,27 +7,39 @@ public class Main {
   public static void main(String[] args) {
     ComparadorString c2 = new ComparadorString();
 
-    // //String
-    // ListaEnlazada<String> listaString = new ListaEnlazada<>(c2);
+    //String
+    // ListaEnlazada<String> ls = new ListaEnlazada<>(c2);
 
-    // listaString.add("Parcial");
-    // listaString.add("Facil");
-    // listaString.add("Es");
-    // listaString.add("Prog2");
+    // ls.add("Parcial");
+    // ls.add("Facil");
+    // ls.add("Es");
+    // ls.add("Prog2");
 
-    // System.out.println(listaString);
+    // eliminar
+    // System.out.println(ls);
+    // ls.remove(2);
+    // System.out.println(ls);
+
 
     // int
     ComparadorInt c1 = new ComparadorInt();
     ListaEnlazada<Integer> l1 = new ListaEnlazada<>(c1);
     l1.add(16);
+    l1.add(1);
     l1.add(2);
-    l1.add(17);
+    l1.add(2);
+    l1.add(7);
     l1.add(7);
     l1.add(4);
 
+    //eliminar todas las ocurrencias
     System.out.println(l1);
-    l1.remove(4);
-    System.out.println(l1);
+    // l1.removeAll(2);
+    // System.out.println(l1);
+
+    //eliminar 
+    // System.out.println(l1);
+    // l1.remove(3);
+    // System.out.println(l1);
   }
 }
