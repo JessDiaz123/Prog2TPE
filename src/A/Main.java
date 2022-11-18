@@ -1,7 +1,9 @@
-import Comparadores.ComparadorInt;
-import Comparadores.ComparadorInvertido;
-import Comparadores.ComparadorString;
+package A;
 import java.util.Comparator;
+
+import A.Comparadores.ComparadorInt;
+import A.Comparadores.ComparadorInvertido;
+import A.Comparadores.ComparadorString;
 
 public class Main {
 
@@ -25,17 +27,19 @@ public class Main {
     ComparadorInt cInt = new ComparadorInt();
     ListaEnlazada<Integer> l1 = new ListaEnlazada<>(cInt);
     l1.add(16);
-    System.out.println("el size es: " + l1.getSize());
     l1.add(1);
-    System.out.println("el size es: " + l1.getSize());
     l1.add(2);
     l1.add(2);
     l1.add(7);
     l1.add(7);
     l1.add(4);
+    
+    // mostrar lista con iterador
+    l1.showList();
+    System.out.println("=====Agrego un numero====");
+    l1.add(-23);
+    l1.showList();
 
-
-    System.out.println("el size es: " + l1.getSize());
     //eliminar todas las ocurrencias
     // System.out.println(l1);
     // l1.removeAll(2);

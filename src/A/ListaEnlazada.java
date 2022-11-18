@@ -1,3 +1,4 @@
+package A;
 import java.util.Comparator;
 
 public class ListaEnlazada<T> {
@@ -12,7 +13,13 @@ public class ListaEnlazada<T> {
   
 
   // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista
-
+  public void showList(){
+    MiIterador <T> it = new MiIterador<>(this.primerNodo);
+    while(it.hasNext()){
+      T i= it.next();
+      System.out.println(i);
+    }
+  }
   // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente
   // reordenamiento de los elementos ya almacenados.
   public void setOrden(Comparator<T> compNuevo) {
