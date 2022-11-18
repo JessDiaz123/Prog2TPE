@@ -1,7 +1,8 @@
 package A;
 import java.util.Comparator;
+import java.util.Iterator;
 
-public class ListaEnlazada<T> {
+public class ListaEnlazada<T> implements Iterable<T>{
 
   private Nodo<T> primerNodo;
   private Comparator<T> orden;
@@ -9,6 +10,14 @@ public class ListaEnlazada<T> {
 
   public ListaEnlazada(Comparator<T> comp) {
     this.orden = comp;
+  }
+
+  public boolean contains(T elemento){
+    if(this.find(elemento)!= -1)
+      return true;
+    else{
+      return false;
+    }
   }
   
 
@@ -36,13 +45,11 @@ public class ListaEnlazada<T> {
 
   }
   //d) Obtener la posición de la primera ocurrencia de un elemento dado.
-  public int find(int elementoAEncontrar) {
+  public int find(T elementoAEncontrar) {
     Nodo<T> puntero = primerNodo;
     int pos = 0;
 
     while (puntero != null) {
-      // System.out.println(pos);
-      // System.out.println(puntero);
       if (puntero.getValor().equals(elementoAEncontrar)) {
         return pos;
       } else {
@@ -158,42 +165,13 @@ public class ListaEnlazada<T> {
     }
     return aux;
   }
+
+  @Override
+  public Iterator<T> iterator() {
+    	return new MiIterador<T>(primerNodo);
+  }
+
+
 }
-/*
- public void agregarOrdenado(T datoNuevo) {
-    Nodo<T> nuevo = new Nodo<T>(datoNuevo);
-    Nodo<T> puntero1;
-    Nodo<T> puntero2;
-    // si el primer nodo esta vacio
-    // while(flag!=false){if (primerNodo == null) {
-      primerNodo = nuevo;
-      primerNodo.setSiguiente(null);
-    } else {
-      puntero1 = primerNodo;
-      while (puntero1 != null) {
-        puntero2 = puntero1.getSiguiente();
-        // el numero nuevo debe ir al inicio de la lista?
-        if (orden.compare(puntero1.getValor(), nuevo.getValor()) >= 0) {
-          nuevo.setSiguiente(primerNodo);
-          primerNodo = nuevo;
-          break;
-        } else {
-          // el numero nuevo va al final de la lista?
-          if (orden.compare(nuevo.getValor(), puntero1.getValor()) > 0 && puntero2 == null) {
-            puntero1.setSiguiente(nuevo);
-            break;
-          }
-          else if ((orden.compare( nuevo.getValor(), puntero1.getValor())>0)&&
-          orden.compare( puntero2.getValor(),nuevo.getValor())>=0){
-            // el nuevo tiene que ir entre 2 nodos?
-              puntero1.setSiguiente(nuevo);
-              nuevo.setSiguiente(puntero2);
-              break;
-          }
-          else{
-            puntero1 = puntero1.getSiguiente();
-          }
-        }
-      }
-    }
- */
+
+

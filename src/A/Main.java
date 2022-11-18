@@ -11,13 +11,20 @@ public class Main {
     ComparadorString c2 = new ComparadorString();
 
     //String
-    // ListaEnlazada<String> ls = new ListaEnlazada<>(c2);
+    ListaEnlazada<String> ls = new ListaEnlazada<>(c2);
 
-    // ls.add("Parcial");
-    // ls.add("Facil");
-    // ls.add("Es");
-    // ls.add("Prog2");
+    ls.add("Parcial");
+    ls.add("Facil");
+    ls.add("Es");
+    ls.add("Prog2");
 
+    //find
+    // System.out.println(ls);
+    // System.out.println("resultado:" + ls.find("aaa"));
+    
+    //contains
+    // System.out.println("Utilizando el contains");
+    // System.out.println(ls.contains("Parcial"));
     // eliminar
     // System.out.println(ls);
     // ls.remove(2);
@@ -34,11 +41,16 @@ public class Main {
     l1.add(7);
     l1.add(4);
     
-    // mostrar lista con iterador
-    l1.showList();
-    System.out.println("=====Agrego un numero====");
-    l1.add(-23);
-    l1.showList();
+    //contains
+    // System.out.println("Probando contains numero");
+    // System.out.println(l1.contains(3));
+
+    
+    // // mostrar lista con iterador
+    // l1.showList();
+    // System.out.println("=====Agrego un numero====");
+    // l1.add(-23);
+    // l1.showList();
 
     //eliminar todas las ocurrencias
     // System.out.println(l1);
@@ -55,9 +67,9 @@ public class Main {
     // System.out.println(l1);
 
 
-    //encontrar la primer ocurrencia
+    // encontrar la primer ocurrencia
     // System.out.println(l1);
-    // System.out.println("la posicion es:"+l1.find(-23));;
+    // System.out.println("la posicion es:"+l1.find(7));;
     
     // cambiar el metodo de ordenar y ordenar de otra manera
     // System.out.println(l1);
